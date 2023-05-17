@@ -15,7 +15,7 @@ source:
     - version.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<36]
 
 requirements:
@@ -28,9 +28,9 @@ requirements:
     - m2-bison =3.0.4   # [win]
     - xonsh =0.13.4     # [win]
     - ninja             # [win]
+    - re2c =2.2
 
   host:
-    - re2c =2.2
     - xeus =2.4.1
     - llvmdev =11.1.0
     - xtl
@@ -49,11 +49,11 @@ test:
   commands:
     - test -f ${PREFIX}/bin/lpython  # [unix]
     - if not exist %LIBRARY_PREFIX%\bin\lpython.exe exit 1  # [win]
-    - lpython --help
-    - lpython --version
-    - jupyter kernelspec list --json
+    - lpython --help  # [ not osx or not arm64]
+    - lpython --version  # [ not osx or not arm64]
+    - jupyter kernelspec list --json  # [ not osx or not arm64]
       # This fails if the `fortran` spec is not installed
-    - jupyter kernelspec remove -f fortran
+    - jupyter kernelspec remove -f fortran  # [ not osx or not arm64]
 
 about:
   home: https://lpython.org
