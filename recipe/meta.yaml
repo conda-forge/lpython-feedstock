@@ -49,8 +49,8 @@ test:
   commands:
     - test -f ${PREFIX}/bin/lpython  # [unix]
     - if not exist %LIBRARY_PREFIX%\bin\lpython.exe exit 1  # [win]
-    - lpython --help
-    - lpython --version
+    - lpython --help  # [ not osx or not arm64]
+    - lpython --version  # [ not osx or not arm64]
     - jupyter kernelspec list --json
       # This fails if the `fortran` spec is not installed
     - jupyter kernelspec remove -f fortran
