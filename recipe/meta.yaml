@@ -10,12 +10,10 @@ source:
   sha256: 66bc8f6f882a0ac99286c9578e22f31562d0774b9cb9d7d121a7193d9569293f
   patches:
     - macos_clock.patch
-    - win_tests.patch
-    - msvc_static.patch
     - version.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<36]
 
 requirements:
