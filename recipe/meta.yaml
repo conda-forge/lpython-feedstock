@@ -11,11 +11,10 @@ source:
   patches:
     - macos_clock.patch
     - win_tests.patch
-    - msvc_static.patch
     - version.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<36]
 
 requirements:
