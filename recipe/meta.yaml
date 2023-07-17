@@ -1,5 +1,5 @@
 {% set name = "lpython" %}
-{% set version = "0.18.1" %}
+{% set version = "0.18.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/lcompilers/lpython/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: fccbd05178da39d92ce1c4389d5e7cd377baecc71d42c007ff738b5cc31e4f2c
+  sha256: 593b582c547f72fc661b5c16b6ce7ea18efb419418760097d742a9dd654759b9
   patches:
     - macos_clock.patch
     - version.patch
