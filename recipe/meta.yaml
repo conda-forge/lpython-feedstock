@@ -44,8 +44,12 @@ requirements:
 test:
   source_files:
     - examples/expr2.py
+    - tests/
+    - integration_tests/
+    - run_tests.py
   requires:
     - jupyter
+    - python
   commands:
     - test -f ${PREFIX}/bin/lpython  # [unix]
     - if not exist %LIBRARY_PREFIX%\bin\lpython.exe exit 1  # [win]
@@ -54,7 +58,8 @@ test:
     - jupyter kernelspec list --json  # [ not osx or not arm64]
       # This fails if the `fortran` spec is not installed
     - jupyter kernelspec remove -f fortran  # [ not osx or not arm64]
-    - lpython -c examples/expr2.py # [ not arm64]
+    - lpython -c examples/expr2.py  # [ not arm64]
+    - python run_tests.py --skip-run-with-dbg  # [win]
 
 about:
   home: https://lpython.org
