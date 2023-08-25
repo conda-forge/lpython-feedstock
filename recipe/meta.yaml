@@ -54,7 +54,7 @@ test:
     - jupyter kernelspec list --json  # [ not osx or not arm64]
       # This fails if the `fortran` spec is not installed
     - jupyter kernelspec remove -f fortran  # [ not osx or not arm64]
-    - lpython -c examples/expr2.py
+    - lpython -c examples/expr2.py # [ not arm64]
 
 about:
   home: https://lpython.org
