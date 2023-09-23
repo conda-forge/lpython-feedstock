@@ -9,7 +9,6 @@ source:
   url: https://github.com/lcompilers/lpython/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 741fb64ddf70528eb713103d5b6e2068344b5768b546b0c21145d5a1507635a0
   patches:
-    - macos_clock.patch
     - version.patch
 
 build:
