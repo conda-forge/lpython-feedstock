@@ -1,5 +1,5 @@
 {% set name = "lpython" %}
-{% set version = "0.20.0" %}
+{% set version = "0.22.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,9 +7,10 @@ package:
 
 source:
   url: https://github.com/lcompilers/lpython/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 741fb64ddf70528eb713103d5b6e2068344b5768b546b0c21145d5a1507635a0
+  sha256: 72779cb7789deb2e501971cb80b8915ce244dda0b8e7532402b194d4dff3672b
   patches:
     - version.patch
+    - build0_win.xsh.patch
 
 build:
   number: 0
@@ -19,6 +20,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - cmake
     - make   # [unix]
     - bison =3.4        # [not win]
@@ -28,12 +30,11 @@ requirements:
     - re2c =2.2
 
   host:
-    - xeus =2.4.1
+    - xeus =5.1.0
+    - xeus-zmq =3.0.0
     - llvmdev =11.1.0
-    - xtl
-    - nlohmann_json
-    - cppzmq
-    - zlib
+    - nlohmann_json =3.11.3
+    - zlib =1.3.1
   run:
     # xeus breaks abi compatibility in patch versions even though
     # run_exports say otherwise in https://github.com/conda-forge/xeus-feedstock/blob/0896038be810da2944ebcb612e22886815ea691e/recipe/meta.yaml#L18
@@ -42,15 +43,15 @@ requirements:
 
 test:
   requires:
-    - jupyter
+    - jupyter =1.0.0
   commands:
     - test -f ${PREFIX}/bin/lpython  # [unix]
     - if not exist %LIBRARY_PREFIX%\bin\lpython.exe exit 1  # [win]
     - lpython --help  # [ not osx or not arm64]
     - lpython --version  # [ not osx or not arm64]
     - jupyter kernelspec list --json  # [ not osx or not arm64]
-      # This fails if the `fortran` spec is not installed
-    - jupyter kernelspec remove -f fortran  # [ not osx or not arm64]
+      # This fails if the `lpython` spec is not installed
+    - jupyter kernelspec remove -f lpython  # [ not osx or not arm64]
 
 about:
   home: https://lpython.org
