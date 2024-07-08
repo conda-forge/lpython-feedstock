@@ -51,7 +51,7 @@ test:
     - lpython --version  # [ not osx or not arm64]
     - jupyter kernelspec list --json  # [ not osx or not arm64]
       # This fails if the `lpython` spec is not installed
-    - jupyter kernelspec remove -f lpython  # [not win]
+    - jupyter kernelspec remove -f lpython  # [ not osx or not arm64]
 
 about:
   home: https://lpython.org
