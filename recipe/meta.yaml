@@ -10,6 +10,7 @@ source:
   sha256: 72779cb7789deb2e501971cb80b8915ce244dda0b8e7532402b194d4dff3672b
   patches:
     - version.patch
+    - build0_win.xsh.patch
 
 build:
   number: 0
