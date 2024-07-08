@@ -1,5 +1,7 @@
 c_compiler:
 - vs2019
+c_stdlib:
+- vs
 channel_sources:
 - conda-forge
 channel_targets:
@@ -8,5 +10,3 @@ cxx_compiler:
 - vs2019
 target_platform:
 - win-64
-zlib:
-- '1.2'
